@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Login</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #F3F5F9; /* Light gray-blue */
+        }
+        
+        .login-container {
+            width: 350px;
+            margin: 0 auto;
+            margin-top: 100px;
+            text-align: center;
+            background-color: #FFFFFF; /* White */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 35px;
+            color: #3B82F6; /* Blue */
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        
+        .form-label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #718096; /* Gray */
+        }
+        
+        .login-input {
+            width: 95%;
+            min-width: 200px; /* Added minimum width */
+            padding: 10px;
+            border: 1px solid #E5E7EB; /* Light gray */
+            border-radius: 5px;
+        }
+        
+        .login-button {
+            width: 100%;
+            margin-top: 20px;
+            background-color: #3B82F6; /* Blue */
+            color: #FFFFFF; /* White */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .login-button:hover {
+            background-color: #2563EB; /* Dark blue */
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="login-container">
+        <p:outputLabel value="Se connecter" styleClass="login-title" /> 
+        <br> </br>
+        <p:outputLabel  value="${param.errorMsg}"  style="color: red; font-weight: bold;font-size:15px"/>
+		<br> </br>
+        <h:form>
+            <div class="form-group">
+                <p:outputLabel for="username" styleClass="form-label" value="Nom de l'utilsateur"/>
+                <p:inputText id="username" styleClass="login-input" value="#{gardeMB.assistante.username}" />
+            </div>
+            
+            <div class="form-group">
+                <p:outputLabel for="password" styleClass="form-label" value="Mot de passe"/>
+                <p:password id="password" styleClass="login-input" value="#{gardeMB.assistante.password}" />
+            </div>
+            
+            <p:commandButton value="Se connecter" styleClass="login-button" action="#{gardeMB.login()}" />
+            <p:commandButton value="Creer un compte" styleClass="login-button" action="#{gardeMB}" />
+        </h:form>
+    </div>
+</h:body>
+
+</html>

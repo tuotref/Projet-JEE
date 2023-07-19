@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+	    <f:viewAction action="#{adminMB.initDataTables}" />
+</f:metadata>
+
+<h:head>
+    <title>Admin Dashboard</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #F5F8FA;
+        }
+        
+        .dashboard-header {
+            background-color: #1ABC9C; /* Green color for the header */
+            color: #FFFFFF;
+            padding: 10px;
+        }
+        
+        .dashboard-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .dashboard-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .summary-item {
+            text-align: center;
+            padding: 10px;
+            background-color: #E3F2FD;
+            border-radius: 5px;
+            flex: 1;
+            margin-right: 10px;
+        }
+        
+        .enfants-section,
+        .assistants-section {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .enfants-section .section-title,
+        .assistants-section .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1ABC9C; /* Green color for section titles */
+        }
+        
+        .enfants-table,
+        .assistants-table {
+            width: 100%;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="dashboard-header">
+        <div class="dashboard-title">Tableau de board</div>
+        <p:commandButton value="Logout" action="#{adminMB.logout}" styleClass="p-button-danger" />
+    </div>
+    
+    <div class="dashboard-summary">
+        <div class="summary-item">
+            <div>Nombre des enfants</div>
+            <div>23</div>
+        </div>
+        <div class="summary-item">
+            <div>Nombre des assistants</div>
+            <div>20</div>
+        </div>
+        <div class="summary-item">
+            <div>Contracts Active</div>
+            <div>12</div>
+        </div>
+    </div>
+    
+    <div class="enfants-section">
+        <div class="section-title">Gestion des enfants</div>
+        <p:dataTable value="#{adminMB.listEnfants}" var="enfant" class="enfants-table">
+            <p:column headerText="ID">
+                <h:outputText value="#{enfant.id}" />
+            </p:column>
+            <p:column headerText="First Name">
+                <h:outputText value="#{enfant.fName}" />
+            </p:column>
+            <p:column headerText="Last Name">
+                <h:outputText value="#{enfant.lName}" />
+            </p:column>
+            <!-- Add more columns based on your requirements -->
+        </p:dataTable>
+    </div>
+    
+    <div class="assistants-section">
+        <div class="section-title">Gestion des assistantes</div>
+        <p:dataTable value="#{adminMB.listAssistantes}" var="assistant" class="assistants-table">
+            <p:column headerText="ID">
+                <h:outputText value="#{assistant.id}" />
+            </p:column>
+            <p:column headerText="First Name">
+                <h:outputText value="#{assistant.fName}" />
+            </p:column>
+            <p:column headerText="Last Name">
+                <h:outputText value="#{assistant.lName}" />
+            </p:column>
+            <!-- Add more columns based on your requirements -->
+        </p:dataTable>
+    </div>
+</h:body>
+
+</html>

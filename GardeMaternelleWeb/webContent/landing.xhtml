@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+      
+
+
+<h:head>
+    <style>
+        /* Custom CSS styles */
+        .body-bg {
+            background-color: #F3F5F9; /* Light gray-blue */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column; 
+            text-align: center;
+        }
+        
+        .title {
+            color: #3B82F6; /* Blue */
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #718096; /* Gray */
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+      
+        
+        /* Button styles */
+        .rounded-button {
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .admin-button {
+            background-color: #EF4444; /* Red */
+            color: #FFFFFF; /* White */
+        }
+        
+        .assistante-button {
+            background-color: #10B981; /* Green */
+            color: #FFFFFF; /* White */
+        }
+    </style>
+</h:head>
+
+<h:body class="body-bg">
+    <p:outputLabel value="Bienvenue dans l'application de gestion de garde d'enfants !" styleClass="title"/>
+	<p:outputLabel value="Cette application vous permet de gérer efficacement les activités et les contrats de garde d'enfants.
+	Avec quelques clics, vous pouvez créer des contrats, suivre les arrivées et les départs, et consulter des récapitulatifs et des statistiques." styleClass="description" />
+    
+    <div>
+        <a href="Admin/login.xhtml" style="text-decoration: none;"><p:commandButton type="button" value="Admin" styleClass="rounded-button admin-button"  /></a>
+        <span style="margin: 10px;"></span>
+        <a href="Assistante/login.xhtml" style="text-decoration: none;"><p:commandButton type="button" value="Assistante" styleClass="rounded-button assistante-button" /></a>   
+    </div>
+
+</h:body>
+</html>

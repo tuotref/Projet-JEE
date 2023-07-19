@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core_rt"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+    <f:viewAction action="#{gardeMB.initAssistanteDataTable}" />
+    	<f:viewAction action="#{gardeMB.checkLoggedInAssistante()}" /> 
+</f:metadata>
+
+<h:head>
+    <title>Manage Enfants</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #F3F5F9; /* Light gray-blue */
+        }
+        .custom-button {
+            background-color: #3B82F6 !important; /* Blue */
+            color: #FFFFFF !important; /* White */
+            border-color: #3B82F6 !important; /* Blue */
+        }
+        .navbar {
+            background-color: #3B82F6; /* Blue */
+            color: #FFFFFF; /* White */
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .navbar-logo {
+            margin-right: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFFFFF !important; /* White */
+            text-decoration: none;
+        }
+        
+        .navbar-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-button {
+            margin-left: 10px;
+            background-color: #FFFFFF; /* White */
+            color: #3B82F6; /* Blue */
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .content-container {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .block-button-container {
+            display: flex;
+        }
+        
+        .block-button {
+            display: block;
+            margin-right: 5px;
+        }
+        
+        .button-contrat {
+            background-color: #3B82F6 !important; /* Blue */
+            color: #FFFFFF !important; /* White */
+        }
+        
+        .button-renew {
+            background-color: #FF9800 !important; /* Orange */
+            color: #FFFFFF !important; /* White */
+        }
+    </style>
+    
+    <h:outputStylesheet library="primefaces" name="primefaces.css" />
+    <h:outputScript library="primefaces" name="jquery/jquery.js" />
+    <h:outputScript library="primefaces" name="primefaces.js" />
+</h:head>
+
+<h:body>
+    <h:form>
+        <ui:include src="navbar.xhtml" />
+
+        <div class="content-container">
+			<p:outputLabel value="Gerer les Enfants" styleClass="header" />       
+			<br />
+            <!-- DataTable to display enfants -->
+            <p:dataTable value="#{gardeMB.listEnfants}" var="enfant">
+                <p:column headerText="Prenom">
+                    <h:outputText value="#{enfant.fName}" />
+                </p:column>
+                <p:column headerText="Nom">
+                    <h:outputText value="#{enfant.lName}" />
+                </p:column>
+                <p:column headerText="Date de naissance">
+                    <h:outputText value="#{enfant.dateOfBirth}" />
+                </p:column>
+                <p:column headerText="Nom de la mere">
+                    <h:outputText value="#{enfant.motherName}" />
+                </p:column>
+                <p:column headerText="Nom du pere">
+                    <h:outputText value="#{enfant.fatherName}" />
+                </p:column>
+                
+                
+      			 <p:column headerText="Reference contrat">
+                       <p:button value="#{enfant.contract.reference}" styleClass="custom-button"  outcome="Details">
+                        <f:param name="id" value="#{enfant.id}" />
+                    </p:button>
+                </p:column>
+                
+               	<p:column headerText="Heure de presence">
+                       <p:button value="Present(e)" styleClass="custom-button"  outcome="present">
+                        <f:param name="id" value="#{enfant.id}" />
+                    </p:button>
+                </p:column>
+            </p:dataTable>
+        </div>
+    </h:form>
+</h:body>
+
+</html>

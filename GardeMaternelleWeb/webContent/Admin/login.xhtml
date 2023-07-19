@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head>
+    <title>Admin Login</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #F3F5F9; /* Light gray-blue */
+        }
+        
+        .admin-login-container {
+            width: 400px;
+            margin: 0 auto;
+            margin-top: 150px;
+            text-align: center;
+            background-color: #FFFFFF; /* White */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-login-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 35px;
+            color: #10B981; /* Green */
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #718096; /* Gray */
+            font-weight: bold;
+        }
+        
+        .admin-login-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #E5E7EB; /* Light gray */
+            border-radius: 5px;
+        }
+        
+        .admin-login-button {
+            width: 100%;
+            margin-top: 20px;
+            background-color: #10B981; /* Green */
+            color: #FFFFFF; /* White */
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .admin-login-button:hover {
+            background-color: #059669; /* Dark green */
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="admin-login-container">
+        <p:outputLabel value="Admin Connexion" styleClass="admin-login-title" /> 
+     	<br></br>
+     	<p:outputLabel  value="${param.errorMsg}"  style="color: red; font-weight: bold;font-size:15px"/>
+         <br></br>
+        <h:form>
+		<br></br>
+            <div class="form-group">
+                <p:outputLabel for="username" styleClass="form-label" value="Username"/>
+                <p:inputText id="username" styleClass="admin-login-input" value="#{adminMB.admin.username}" />
+            </div>
+            
+            <div class="form-group">
+                <p:outputLabel for="password" styleClass="form-label" value="Password"/>
+                <p:password id="password" styleClass="admin-login-input" value="#{adminMB.admin.password}" />
+            </div>
+            
+            <p:commandButton value="Login" styleClass="admin-login-button" action="#{adminMB.login()}" />
+        </h:form>
+    </div>
+</h:body>
+
+</html>

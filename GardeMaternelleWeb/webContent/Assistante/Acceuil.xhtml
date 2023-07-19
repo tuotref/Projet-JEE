@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+      
+      <f:metadata>
+    	<f:viewAction action="#{gardeMB.checkLoggedInAssistante()}" /> 
+</f:metadata>
+
+<h:head>
+    <title>Home</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #F3F5F9; /* Light gray-blue */
+        }
+        
+        .welcome-container {
+            margin-top: 150px;
+            text-align: center;
+        }
+        
+        .welcome-message {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #3B82F6; /* Blue */
+        }
+        
+        .description {
+            font-size: 18px;
+            color: #718096; /* Gray */
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h:form>
+        <ui:include src="navbar.xhtml" />
+        <div class="welcome-container">
+            <h:outputText styleClass="welcome-message" value="Bienvenue Assistante #{SessionScope.Assistante.fName}" /> 
+            <br/><br/>
+            ${SessionScope.Assistante.fName}
+            <h:outputText styleClass="description" value="Bienvenue sur notre application de garde d'enfants. Cette plateforme vous permet de gérer facilement la garde des enfants et d'accéder à différentes fonctionnalités" />
+            
+        </div>
+    </h:form>
+</h:body>
+
+</html>

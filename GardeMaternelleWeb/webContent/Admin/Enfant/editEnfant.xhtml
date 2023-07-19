@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+    	<f:viewAction action="#{adminMB.checkLoggedIn()}" /> 
+    	<f:viewAction action="#{adminMB.initEnfantForm()}" /> 
+</f:metadata>
+
+<h:head>
+    <title>Edit Child</title>
+    <style>
+  
+    </style>
+</h:head>
+
+<h:body>
+	<ui:include src="navDash.xhtml" />
+    <h:form>
+      <div class="edit-child-form">
+            <div class="form-title">Modifier les informations de "#{adminMB.selectedEnfant.fName} #{adminMB.selectedEnfant.lName}"</div>
+            <p:panelGrid columns="2" columnClasses="edit-label, edit-value">
+           <h:outputLabel for="fName" value="First Name: " />
+                <p:inputText id="fName" value="#{adminMB.selectedEnfant.fName}" required="true" />
+
+                <h:outputLabel for="lName" value="Last Name: " />
+                <p:inputText id="lName" value="#{adminMB.selectedEnfant.lName}" required="true" />
+
+
+                <h:outputLabel for="dateOfBirth" value="Date of Birth: " />
+                <div class="edit-value">
+                    <p:calendar id="dateOfBirth" value="#{adminMB.selectedEnfant.dateOfBirth}" 
+                                pattern="yyyy-MM-dd" 
+                                required="true" 
+                                converter="javax.faces.DateTime" 
+                                showOn="button" />
+                </div>
+
+                 <h:outputLabel for="motherName" value="Mother's Name: " />
+                <p:inputText id="motherName" value="#{adminMB.selectedEnfant.motherName}" required="true" />
+            </p:panelGrid>
+
+            <div class="button-bar">
+                <p:commandButton value="Save Changes" action="#{adminMB.editEnfant()}" />
+                <p:button value="Cancel" outcome="listeEnfants" styleClass="p-button p-button-danger" />
+            </div>
+        </div>
+    </h:form>
+</h:body>
+
+</html>
+
+

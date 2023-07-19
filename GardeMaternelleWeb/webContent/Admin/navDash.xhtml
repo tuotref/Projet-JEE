@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	   <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #F5F8FA;
+        }
+		/* styles.css */
+
+  .form-title {
+                font-size: 24px;
+                font-weight: bold;
+                margin: 20px;
+            }
+/* Form container */
+.add-contract-section {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form labels */
+.add-contract-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Form input fields */
+.add-contract-section input[type="text"]
+ {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+	  .select-assistante {
+                width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+            }
+
+
+/* Form calendar input */
+.add-contract-section .ui-inputtext {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Form buttons */
+.add-contract-section .ui-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-contract-section .ui-button:hover {
+    background-color: #0056b3;
+}
+
+/* Error messages */
+.add-contract-section .ui-messages-error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+		
+        .dashboard-header {
+            background-color: #1ABC9C; /* Green color for the header */
+            color: #FFFFFF;
+            padding: 10px;
+        }
+
+        .dashboard-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .dashboard-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .summary-item {
+            text-align: center;
+            padding: 10px;
+            background-color: #E3F2FD;
+            border-radius: 5px;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .enfants-section,
+        .assistants-section,
+        .contrats-section {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        /* Additional styles for action buttons */
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        /* Style for the "Edit" button */
+        .action-buttons .p-button,
+        .action-buttons .p-button-info {
+            background-color: #1ABC9C; /* Green */
+            color: #FFFFFF; /* White */
+            padding: 6px 12px; /* Reduce padding to make buttons smaller */
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style for the "Delete" button */
+        .action-buttons .p-button-danger {
+            background-color: #EF4444; /* Red */
+            color: #FFFFFF; /* White */
+            padding: 6px 12px; /* Reduce padding to make buttons smaller */
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Hover style for both buttons */
+        .action-buttons .p-button:hover,
+        .action-buttons .p-button-info:hover {
+            filter: brightness(90%);
+        }
+
+        /* Style for the unordered list */
+        .action-buttons ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for the list items */
+        .action-buttons li {
+            margin-bottom: 5px;
+        }
+
+        .enfants-table,
+        .assistants-table,
+        .contrats-table {
+            width: 100%;
+            font-size: 14px; /* Adjust font size */
+        }
+
+        /* Style for table headers */
+        .enfants-table th,
+        .assistants-table th,
+        .contrats-table th {
+            background-color: #E5E7EB; /* Light gray */
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #D1D5DB; /* Gray */
+        }
+        
+     
+      
+
+        .button-bar {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-bar .p-button {
+            background-color: #1ABC9C;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-bar .p-button-danger {
+            background-color: #EF4444;
+        }
+
+        /* Style for table cells */
+        .enfants-table td,
+        .assistants-table td,
+        .contrats-table td {
+            padding: 8px;
+            border: 1px solid #D1D5DB; /* Gray */
+        }
+
+        /* Style for the section titles */
+        .enfants-section .section-title,
+        .assistants-section .section-title,
+        .contrats-section .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1ABC9C; /* Green color for section titles */
+        }
+        
+            .sidebar-button {
+        display: block;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #4B5563; /* Gray */
+        color: #FFFFFF;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s; /* Add a smooth transition effect */
+    }
+
+    /* Style for the active button */
+    .sidebar-button.active {
+        background-color: #1ABC9C; /* Green */
+    }
+
+    /* Hover style for both active and inactive buttons */
+    .sidebar-button:hover {
+        filter: brightness(90%);
+    }
+        </style>
+
+</h:head> 
+<body> 
+  <div class="dashboard-header">
+        <div class="dashboard-title">Tableau de board</div>
+        <p:commandButton value="Logout" action="#{adminMB}" styleClass="p-button-danger" />
+    </div>
+
+    <div class="dashboard-summary">
+         <div class="summary-item">
+            <div>Nombre des enfants</div>
+            <div>#{adminMB.getNombreDesEnfants()}</div>
+        </div>
+        <div class="summary-item">
+            <div>Nombre des assistants</div>
+            <div>#{adminMB.getNombreDesAssistantes()}</div>
+        </div>
+        <div class="summary-item">
+            <div>Contracts Active</div>
+            <div>#{adminMB.getNombreDesContratsActif()}</div>
+        </div>
+    </div>
+</body> 
+</html>

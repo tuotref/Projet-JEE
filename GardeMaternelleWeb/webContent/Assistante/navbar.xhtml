@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+
+<f:metadata>
+    	<f:viewAction action="#{gardeMB.checkLoggedInAssistante()}" /> 
+</f:metadata>
+
+<h:head>
+    <style>
+        /* Custom CSS styles */
+        .navbar {
+            background-color: #3B82F6; /* Blue */
+            color: #FFFFFF; /* White */
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .navbar-logo {
+            margin-right: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 10px;
+            color: #FFFFFF !important; /* White */
+            text-decoration: none;
+        }
+        
+        .navbar-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-button {
+            margin-left: 10px;
+            background-color: #FFFFFF; /* White */
+            color: #3B82F6; /* Blue */
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <p:panel>
+        <div class="navbar">
+            <h:outputLink value="Acceuil.xhtml" styleClass="navbar-logo">Garde maternelle</h:outputLink>
+    
+            <div class="navbar-buttons">
+                <p:button value="Accueil" outcome="Acceuil" styleClass="navbar-button" />
+                <p:button value="Enfants" outcome="Enfants" styleClass="navbar-button" />
+                <p:button value="Contrats" outcome="Contrats" styleClass="navbar-button" />
+                <h:form>
+	           		 <p:commandButton  styleClass="navbar-button"  value="Se deconnecter" action="#{gardeMB.logout}" />        
+         	   </h:form>
+            </div>
+        </div>
+    </p:panel>
+</h:body>
+
+</html>

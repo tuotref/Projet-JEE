@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+    <f:viewAction action="#{adminMB.initDataTables}" />
+</f:metadata>
+
+<h:head>
+    <title>Admin Dashboard</title>
+ 
+</h:head>
+
+<h:body>
+  
+    <ui:include src="navDash.xhtml" />
+
+    <div class="enfants-section">
+        <div class="section-title">Gestion des enfants</div>
+        <p:dataTable value="#{adminMB.listEnfants}" var="enfant" class="enfants-table" rows="2">
+            <p:column headerText="ID">
+                <h:outputText value="#{enfant.id}" />
+            </p:column>
+            <p:column headerText="Prenom">
+                <h:outputText value="#{enfant.fName}" />
+            </p:column>
+            <p:column headerText="Nom">
+                <h:outputText value="#{enfant.lName}" />
+            </p:column>
+
+            <p:column headerText="Date de Naissance">
+                <h:outputText value="#{enfant.dateOfBirth}" />
+            </p:column>
+
+            <p:column headerText="Maman">
+                <h:outputText value="#{enfant.motherName}" />
+            </p:column>
+
+            <p:column headerText="Actions">
+                <div class="action-buttons">
+                    <p:button value="modif" outcome="editEnfant" styleClass="p-button-info">
+                        <f:param name="id" value="#{enfant.id}" />
+                    </p:button>
+                    <p:button value="supp" outcome="deleteEnfant" styleClass="p-button-danger">
+                        <f:param name="id" value="#{enfant.id}" />
+                    </p:button>
+                </div>
+            </p:column>
+        </p:dataTable>
+		<div class="sidebar-button" onclick="location.href='Enfant/listeEnfants.xhtml'">Liste des Enfants</div>
+    </div>
+
+    <div class="assistants-section">
+        <div class="section-title">Gestion des assistantes</div>
+        <p:dataTable value="#{adminMB.listAssistantes}" var="assistant" class="assistants-table" rows="2">
+            <p:column headerText="ID">
+                <h:outputText value="#{assistant.id}" />
+            </p:column>
+            <p:column headerText="Nom">
+                <h:outputText value="#{assistant.fName}" />
+            </p:column>
+            <p:column headerText="Prenom">
+                <h:outputText value="#{assistant.lName}" />
+            </p:column>
+            <p:column headerText="Enfants en Garde">
+                <ul>
+                    <ui:repeat value="#{adminMB.getChildrenForAssistant(assistant)}" var="enfant" >
+                        <li>#{enfant.id} | #{enfant.lName}</li>
+                    </ui:repeat>
+                </ul>
+            </p:column>
+
+            <p:column headerText="Actions">
+                <div class="action-buttons">
+                    <p:button value="modif" outcome="Assistantes/editAssistante" styleClass="p-button-info">
+                        <f:param name="id" value="#{assistant.id}" />
+                    </p:button>
+                    <p:button value="supp" outcome="Assistantes/deleteAssistante" styleClass="p-button-danger">
+                        <f:param name="id" value="#{assistant.id}" />
+                    </p:button>
+                </div>
+            </p:column>
+        </p:dataTable>
+        <div class="sidebar-button" onclick="location.href='Assistantes/listAssistantes.xhtml'">Liste des Assistances</div>
+    </div>
+    
+	 <div class="contrats-section">
+        <div class="section-title">Gestion des contrats</div>
+        <p:dataTable value="#{adminMB.listContracts}" var="contrat" class="contrats-table" rows="2">
+            <p:column headerText="ID">
+                <h:outputText value="#{contrat.id}" />
+            </p:column>
+            <p:column headerText="Type">
+                <h:outputText value="#{contrat.reference}" />
+            </p:column>
+            <p:column headerText="Date de début">
+                <h:outputText value="#{contrat.contractDebute}" />
+            </p:column>
+            <p:column headerText="Date de fin">
+                <h:outputText value="#{contrat.contractEnd}" />
+            </p:column>
+            <p:column headerText="Actions">
+                <div class="action-buttons">
+                    <p:button value="modif" outcome="editContract" styleClass="p-button-info">
+                        <f:param name="id" value="#{contrat.id}" />
+                    </p:button>
+                    <p:button value="supp" outcome="deleteContract" styleClass="p-button-danger">
+                        <f:param name="id" value="#{contrat.id}" />
+                    </p:button>
+                </div>
+            </p:column>
+        </p:dataTable>
+        		<div class="sidebar-button" onclick="location.href='Contrats/listContract.xhtml'">Liste des Contrats</div>
+
+    </div>
+</h:body>
+
+</html>

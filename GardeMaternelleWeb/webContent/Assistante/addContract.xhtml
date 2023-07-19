@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+    	<f:viewAction action="#{gardeMB.checkLoggedInAssistante()}" /> 
+</f:metadata>
+<h:head>
+    <title>Add New Contract</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #F3F5F9; /* Light gray-blue */
+        }
+        
+        .form-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .form-field {
+            margin-bottom: 10px;
+        }
+        
+        .form-label {
+            font-weight: bold;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+        }
+        
+        .form-button {
+            background-color: #3B82F6;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h:form>
+            <ui:include src="navbar.xhtml" />
+        <div class="form-container">
+            <p:outputLabel value="Ajouter nouveau contrat" />
+            <div class="form-field">
+            <br />
+                <p:outputLabel for="reference" value="Reference:" class="form-label" />
+                <p:inputText id="reference" value="#{gardeMB.newContract.reference}" class="form-input" />
+            </div>
+            
+            <div class="form-field">
+                <p:outputLabel for="contractDebute" value="Contract Start Date : " class="form-label" />
+                <p:calendar id="contractDebute" value="#{gardeMB.newContract.contractDebute}"  />
+            </div>
+            
+            <div class="form-field">
+                <p:outputLabel for="contractEnd" value="Contract End Date:" class="form-label" />
+                <p:calendar id="contractEnd" value="#{gardeMB.newContract.contractEnd}"  />
+            </div>
+            
+            <div class="form-field">
+                <p:outputLabel for="tarif" value="Euro par heure:" class="form-label" />
+                <p:inputText id="tarif" value="#{gardeMB.newContract.tarif}" class="form-input" />
+            </div>
+            
+            <div class="form-field">
+                <p:outputLabel for="adressParent" value="Adresse Parent:" class="form-label" />
+                <p:inputTextarea id="adressParent" value="#{gardeMB.newContract.adressParent}" rows="4" class="form-input" />
+            </div>
+            
+            <div class="form-button-container">
+                <p:commandButton value="Add Contract" action="#{gardeMB}" styleClass="form-button" />
+            </div>
+        </div>
+    </h:form>
+</h:body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      > 
+<f:metadata>
+    <f:viewAction action="#{adminMB.initDataTables}" />
+    <f:viewAction action="#{adminMB.checkLoggedIn()}" />
+</f:metadata>
+<h:head></h:head> 
+<h:body> 
+	
+	 <ui:include src="../navDash.xhtml" />
+
+    <div class="enfants-section">
+        <div class="section-title">Liste des enfants</div>
+        <p:dataTable value="#{adminMB.listEnfants}" var="enfant" class="enfants-table" >
+            <p:column headerText="ID">
+                <h:outputText value="#{enfant.id}" />
+            </p:column>
+            <p:column headerText="Prenom">
+                <h:outputText value="#{enfant.fName}" />
+            </p:column>
+            <p:column headerText="Nom">
+                <h:outputText value="#{enfant.lName}" />
+            </p:column>
+
+            <p:column headerText="Date de Naissance">
+                <h:outputText value="#{enfant.dateOfBirth}" />
+            </p:column>
+
+            <p:column headerText="Maman">
+                <h:outputText value="#{enfant.motherName}" />
+            </p:column>
+			
+			
+            <p:column headerText="Actions">
+                <div class="action-buttons">
+                    <p:button value="modif" outcome="editEnfant" styleClass="p-button-info">
+                        <f:param name="id" value="#{enfant.id}" />
+                    </p:button>
+                    <p:button value="supp" outcome="deleteEnfant" styleClass="p-button-danger">
+                        <f:param name="id" value="#{enfant.id}" />
+                    </p:button>
+                </div>
+            </p:column>
+        </p:dataTable>        
+    </div>
+   	<p:button value="Ajouter un enfant" outcome="addEnfant" />
+   	<p:button value="Retour" outcome="/Admin/dashboard.xhtml" />
+	
+</h:body> 
+</html>

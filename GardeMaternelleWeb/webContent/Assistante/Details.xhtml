@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+    <f:viewAction action="#{gardeMB.initEnfantForm}" />
+    	<f:viewAction action="#{gardeMB.checkLoggedInAssistante()}" /> 
+</f:metadata>
+
+<h:head>
+    <title>Les details</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #F3F5F9 !important; /* Light gray-blue */
+        }
+        
+        .content-container {
+            margin-top: 20px;
+            margin-left: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .enfant-info-container,
+        .contract-info-container {
+            background-color: #FFFFFF !important;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+        
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .form-field {
+            margin-bottom: 10px;
+        }
+        
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+        }
+        
+        .form-button {
+            background-color: #050073 !important;
+            color: #FFFFFF !important;
+            border: none;
+            padding: 5px 10px; /* Adjust the padding to make the buttons smaller */
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+            font-size: 12px; /* Adjust the font size to make the buttons smaller */
+        }
+        
+        .form-button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h:form>
+        <ui:include src="navbar.xhtml" />
+        <div class="content-container">
+            <div class="enfant-info-container">
+                <p:outputLabel styleClass="header" value="Informations de l'enfant" />
+                <div class="form-field">
+               		<br/>
+                    <p:outputLabel for="prenom" value="Prenom : " class="form-label" />
+                    <p:outputLabel id="prenom" value="#{gardeMB.selectedEnfant.fName}"  />
+                </div>
+                <div class="form-field">
+                    <p:outputLabel for="nom" value="Nom : " class="form-label" />
+                    <p:outputLabel id="nom" value="#{gardeMB.selectedEnfant.lName}" />
+                </div>
+                  <div class="form-field">
+                    <p:outputLabel for="assistante" value="nom de l'assistante " class="form-label" />
+                    <p:outputLabel id="assistante" value="#{gardeMB.selectedEnfant.fatherName}" />
+                </div>
+                <div class="form-field">
+                    <p:outputLabel for="contractDateofBirth" value="Date de naissance : " class="form-label" />
+                    <p:outputLabel id="contractDateofBirth" value="#{gardeMB.selectedEnfant.dateOfBirth}"  />
+                </div>
+                
+                <div class="form-field">
+                    <p:outputLabel for="motherName" value="nom et prenom de la mere : " class="form-label" />
+                    <p:outputLabel id="motherName" value="#{gardeMB.selectedEnfant.motherName}" />
+                </div>
+                  <div class="form-field">
+                    <p:outputLabel for="fatherName" value="nom et prenom dub pere: " class="form-label" />
+                    <p:outputLabel id="fatherName" value="#{gardeMB.selectedEnfant.fatherName}" />
+                </div>
+                  
+            </div>
+            
+            <div class="contract-info-container">
+                <p:outputLabel styleClass="header" value="Informations du contrat" />
+                
+                <div class="form-field">
+                	<br/>
+                    <p:outputLabel for="contractStartDate" value="Contract Start Date :" class="form-label" />
+                    <p:outputLabel id="contractStartDate" value="#{gardeMB.selectedEnfant.contract.contractDebute}"  />
+                </div>
+                
+                <div class="form-field">
+                    <p:outputLabel for="contractEndDate" value="Contract End Date : " class="form-label" />
+                    <p:outputLabel id="contractEndDate" value="#{gardeMB.selectedEnfant.contract.contractEnd}"  />
+                </div>
+                
+                <div class="form-field">
+                    <p:outputLabel for="hourlyRate" value="Euro par heure : " class="form-label" />
+                    <p:outputLabel id="hourlyRate" value="#{gardeMB.selectedEnfant.contract.tarif}Є"  />
+                </div>
+                
+                
+                <div class="form-field">
+                    <p:outputLabel for="address" value="Addresse des parents : " class="form-label" />
+                    <p:outputLabel id="address" value="#{gardeMB.selectedEnfant.contract.adressParent}"  />
+                </div>
+                
+                  <div class="form-field">
+                    <p:outputLabel for="reference" value="Reference : " class="form-label" />
+                    <p:outputLabel id="reference" value="#{gardeMB.selectedEnfant.contract.reference}"  />
+                </div>
+                
+                <div class="form-field">
+                    <p:outputLabel for="etat" value="Etat du contrat : " class="form-label" />
+                    <p:outputLabel id="etat" value="#{gardeMB.selectedEnfant.contract.etat}"  />
+                </div>
+                
+                
+                <div class="form-button-container">
+                    <p:commandButton value="Disable" styleClass="form-button" />
+                    <p:commandButton value="Renew" styleClass="form-button" />
+                </div>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+
+</html>
